@@ -1,4 +1,6 @@
 library(tidyverse)
+library(ape)
+library(BactDating)
 source("source/01_creating_lists_of_trees.R")
 source("source/functions.R")
 
@@ -7,13 +9,14 @@ source("source/functions.R")
 #xxxxxxxxxxxxxxxxxxxxxxxxxx
 # Bactdate rooting, R2 ----------------------------------------------------
 #xxxxxxxxxxxxxxxxxxxxxxxxxx
-
-run_bactdate_parallel(tree_list = tree_list_unpruned_unrooted,
+# ST10 gives an error, therefore we exclude it
+run_bactdate_parallel(tree_list = tree_list_unpruned_unrooted[-1],
                       date_tab = date_tab_full,
                       output_fig_dir = "output/unpruned/",
                       num_cores = 25)
 
-run_bactdate_parallel(tree_list = tree_list_treeshrink_v1_unrooted,
+# ST10 gives an error, therefore we exclude it
+run_bactdate_parallel(tree_list = tree_list_treeshrink_v1_unrooted[-1],
                       date_tab = date_tab_full,
                       output_fig_dir = "output/treeshrink_v1_pruned/",
                       num_cores = 25)
@@ -28,7 +31,8 @@ run_bactdate_parallel(tree_list = tree_list_PSFA_unrooted,
                       output_fig_dir = "output/PSFA_pruned/",
                       num_cores = 25)
 
-run_bactdate_parallel(tree_list = tree_list_CPA_unrooted,
+# ST10 gives an error, therefore we exclude it
+run_bactdate_parallel(tree_list = tree_list_CPA_unrooted[-1],
                       date_tab = date_tab_full,
                       output_fig_dir = "output/CPA_pruned/",
                       num_cores = 25)

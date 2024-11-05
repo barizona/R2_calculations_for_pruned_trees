@@ -213,6 +213,7 @@ plotting_tree_colouring_pruned <- function(tree_list_full = tree_list_unpruned_u
             as.phylo()
         
         # indicate if pruned
+        # TODO: droptip rename some nodes, causing red internal nodes that remained
         tree_full <- drop.tip(tree_full, pruned_tips) %>% 
             as_tibble() %>% 
             mutate(pruned = "No") %>%
