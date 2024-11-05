@@ -161,14 +161,18 @@ run_bactdate_parallel <- function(tree_list = tree_list_CPA_PSFA_unrooted,
     
     stopCluster(cl)
     
-    # tibble from the list
-    result_list %>% bind_rows() %>% 
-        # convert all columns as numeric except label
-        mutate(across(-label, as.numeric)) %>% 
-        write_tsv(paste0(output_fig_dir, "r2_values.tsv"))
+    # return(result_list)
     
+    result_tab <- result_list %>% 
+        unlist() %>% 
+        matrix(ncol = 4, byrow = TRUE)
+    
+    colnames(result_tab) <- c("label", "r2", "pvalue", "MRCA")
+    
+    result_tab %>% 
+        as_tibble() %>% 
+        write_tsv(paste0(output_fig_dir, "r2_values.tsv"))
 }
-
 
 
 #xxxxxxxxxxxxxxxxxxxxx
