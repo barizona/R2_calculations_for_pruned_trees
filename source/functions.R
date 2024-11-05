@@ -138,7 +138,8 @@ run_bactdate_parallel <- function(tree_list = tree_list_CPA_PSFA_unrooted,
         dated_tree <- bactdate(tree = tree,
                                date = date_vec,
                                updateRoot = TRUE,
-                               model = "arc")
+                               model = "arc",
+                               nbIts = 1000)
         
         tree <- dated_tree$inputtree  # updating tree
         
